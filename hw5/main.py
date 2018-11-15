@@ -1,5 +1,5 @@
 import difflib
-
+from difflib import SequenceMatcher
 import nltk
 import spacy
 from nltk import *
@@ -54,7 +54,9 @@ print("My system replaced:\n" + str(replaced))
 
 # Evaluate your system
 diff = get_diff(replaced, expected)
-print("Diff between expected and my system result:\n" + str(diff))
+matcher = SequenceMatcher(None, replaced, expected)
+print("Diff between expected and my system result:\n" + str(diff)
+      + "\nratio = " + str(matcher.ratio()))
 
 # Run spaCy coref on the same text
 nlp = spacy.load('en_coref_md')
@@ -62,4 +64,6 @@ doc = nlp(source)
 result_spacy = doc._.coref_resolved
 print("spaCy replace:\n" + str(result_spacy))
 diff = get_diff(str(result_spacy), expected)
-print("Diff between expected and spaCy result:\n" + str(diff))
+matcher = SequenceMatcher(None, str(result_spacy), expected)
+print("Diff between expected and spaCy result:\n" + str(diff)
+      + "\nration = " + str(matcher.ratio()))
