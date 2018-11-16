@@ -50,6 +50,7 @@ for i in range(0, len(sents), n):
 terms_list = []
 for i, paragraph in enumerate(paragraphs):
     tokens = word_tokenize(' '.join(paragraph))
+    tokens = [token for token in tokens if (token.isalpha() and token not in stop_words)]
     for j, token in enumerate(tokens):
         terms_list.append((token, i, j))
 terms_list = sorted(terms_list)
