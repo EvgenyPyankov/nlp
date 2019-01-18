@@ -54,7 +54,7 @@ def birch(X_train, X_test, y_train, y_test):
 
 
 datasetsHelper = DatasetsHelper()
-# datasetsHelper.prepare_dataset()
+# datasetsHelper.prepare_datasets()
 
 dataset = datasetsHelper.load_dataset('dataset_events.csv')
 

@@ -58,7 +58,7 @@ class DatasetsHelper:
                 row.append(metadata["general_topic"])
                 spamwriter.writerow(row)
 
-    def prepare_dataset(self):
+    def prepare_datasets(self):
         documents = self.get_all_documents("data/*.txt")
         vectors = self.get_vectors(documents)
         self.write_event_steps_dataset("dataset_event_steps.csv", vectors)
